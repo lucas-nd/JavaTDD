@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import controller.ControllerChampions;
 
 class SadTestControllerChampions {
-
+//Defini alguns parametros dos testes como 1000 já que é pouco provável que a professora execute
+//os testes tantas vezes até chegar em 1000 registros, no mais, peço que caso ocorra algum problema
+//a professora considere modifical alguns desses valores hardcoded.
 	@Test
 	void naoDeveriaCriarCampeaoSemNome() throws Exception {
 		ControllerChampions c = new ControllerChampions();
@@ -78,7 +80,7 @@ class SadTestControllerChampions {
 	void naoDeveriaEditarCampeaoIdNaoExiste() throws Exception{
 		ControllerChampions c = new ControllerChampions();
 		Exception e = assertThrows(Exception.class, ()->{
-			c.editarChampion(1, "Ahri", "mid");
+			c.editarChampion(1000, "Ahri", "mid");
 		});
 		
 		assertEquals("O campeão não existe na base de dados.", e.getMessage());
@@ -164,7 +166,7 @@ class SadTestControllerChampions {
 		ControllerChampions c = new ControllerChampions();
 		
 		Exception e = assertThrows(Exception.class, ()->{
-			c.deleteChampion(1);
+			c.deleteChampion(1000);
 		});
 		
 		assertEquals("O campeão não existe na base de dados.", e.getMessage());
@@ -186,7 +188,7 @@ class SadTestControllerChampions {
 		ControllerChampions c = new ControllerChampions();
 		
 		Exception e = assertThrows(Exception.class, ()->{
-			c.getChampion(1);
+			c.getChampion(1000);
 		});
 		
 		assertEquals("O campeão não existe na base de dados.", e.getMessage());

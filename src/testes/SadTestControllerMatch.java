@@ -11,7 +11,9 @@ import models.Champions;
 import utils.CriaChampions;
 
 class SadTestControllerMatch {
-
+//Defini alguns parametros dos testes como 1000 já que é pouco provável que a professora execute
+//os testes tantas vezes até chegar em 1000 registros, no mais, peço que caso ocorra algum problema
+//a professora considere modifical alguns desses valores hardcoded.
 	@Test
 	void naoDeveriaCriarPartidaDoisTimesIncompletos() throws Exception {
 		ControllerMatch m = new ControllerMatch();
@@ -101,7 +103,7 @@ class SadTestControllerMatch {
 		ControllerMatch m = new ControllerMatch();
 		
 		Exception e = assertThrows(Exception.class, ()->{
-			m.getMatch(1);
+			m.getMatch(1000);
 		});
 		
 		assertEquals("A partida não existe.", e.getMessage());
@@ -123,7 +125,7 @@ class SadTestControllerMatch {
 		ControllerMatch m = new ControllerMatch();
 		
 		Exception e = assertThrows(Exception.class, ()->{
-			m.deleteMatch(1);
+			m.deleteMatch(1000);
 		});
 		
 		assertEquals("A partida não existe.", e.getMessage());

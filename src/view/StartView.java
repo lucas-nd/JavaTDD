@@ -1,29 +1,23 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import controller.ControllerChampions;
 import controller.ControllerMatch;
 import models.Champions;
 import models.Match;
-import utils.CriaChampions;
 
 public class StartView {
-	static ControllerChampions c = new ControllerChampions();
-	static ControllerMatch m = new ControllerMatch();
+	ControllerChampions c;
+	ControllerMatch m = new ControllerMatch();
 	
-	public static void LoadChamps() throws Exception {
-		c.criaChampion("Gnar", "Top");
-		c.criaChampion("Lee Sin", "Jungle");
-		c.criaChampion("Ahri", "Mid");
-		c.criaChampion("Caitlyn", "Ad-Carry");
-		c.criaChampion("Sona", "Support");
+	public StartView() throws Exception {
+		this.c = new ControllerChampions();
 	}
 	
-	public static void ListarChamps() {
-		ArrayList<Champions> Champions = c.getChampions();
+	public void ListarChamps() throws Exception {
+		ArrayList<Champions> Champions = this.c.getChampions();
 		
 		System.out.println("Lista de Campeões:");
 		
@@ -35,7 +29,7 @@ public class StartView {
 		}
 	}
 	
-	public static void AdicionarChamp() throws Exception{		
+	public void AdicionarChamp() throws Exception{		
 		try {
 			Scanner s1 = new Scanner(System.in);
 			Scanner s2 = new Scanner(System.in);
@@ -46,13 +40,13 @@ public class StartView {
 			System.out.println("Função:");
 			String funcao = s2.nextLine();
 			
-			c.criaChampion(nome, funcao);
+			this.c.criaChampion(nome, funcao);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	public static void EditarChamp() throws Exception{
+	public void EditarChamp() throws Exception{
 		try {
 			Scanner s1 = new Scanner(System.in);
 			Scanner s2 = new Scanner(System.in);
@@ -72,7 +66,7 @@ public class StartView {
 		}
 	}
 	
-	public static void ApagarChamp() throws Exception{
+	public void ApagarChamp() throws Exception{
 		try {
 			Scanner s3 = new Scanner(System.in);
 			
@@ -85,7 +79,7 @@ public class StartView {
 		}
 	}
 	
-	public static void ListarMatches() {
+	public void ListarMatches() throws Exception {
 		ArrayList<Match> Matches = m.getMatches();
 		
 		System.out.println("-------------------------------");
@@ -104,7 +98,7 @@ public class StartView {
 		}
 	}
 	
-	public static void AdicionarMatch() throws Exception{
+	public void AdicionarMatch() throws Exception{
 		try {
 			ArrayList<Champions> blueTeam = new ArrayList<Champions>();
 			ArrayList<Champions> redTeam = new ArrayList<Champions>();
@@ -131,7 +125,7 @@ public class StartView {
 		}
 	}
 	
-	public static void ApagarMatch() throws Exception{
+	public void ApagarMatch() throws Exception{
 		try {
 			Scanner s3 = new Scanner(System.in);
 			
@@ -145,9 +139,7 @@ public class StartView {
 		}
 	}
 	
-	public static void Start() throws Exception {
-		LoadChamps();
-		
+	public void Start() throws Exception {
 		System.out.println("Olá, seja bem vindo a central Summoners Rift!");
 		System.out.println("Você já pode começar a fazer algo!\n");
 		System.out.println("Opções relacionadas aos campeões:");
@@ -184,9 +176,5 @@ public class StartView {
 					break;
 				}
 		}			
-	}
-	
-	public static void main(String[] args) throws Exception {
-		Start();
 	}
 }
